@@ -111,8 +111,8 @@ namespace PasswdGener
                 }
 
                 Console.Write("Do you want UPPERCASE characters? y/n :  ");
-                Console.WriteLine();
                 input = char.ToLower(Console.ReadKey().KeyChar);
+                Console.WriteLine();
                 if (input == 'y')
                 {
                     UPPERCASE_CHARACTERS = true;
@@ -127,8 +127,8 @@ namespace PasswdGener
                 }
 
                 Console.Write("Do you want numeric characters? y/n :  ");
-                Console.WriteLine();
                 input = char.ToLower(Console.ReadKey().KeyChar);
+                Console.WriteLine();
                 if (input == 'y')
                 {
                     NUMERIC_CHARACTERS = true;
@@ -183,7 +183,7 @@ namespace PasswdGener
             } while (lengthOfPassword < 8);
 
             Console.WriteLine("Generating password");
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Your password is: " + PasswordGenerator.GeneratePassword(LOWERCASE_CHARACTERS, UPPERCASE_CHARACTERS, NUMERIC_CHARACTERS, SPECIAL_CHARACTERS, SPACE_CHARACTER, lengthOfPassword));
         }
     }
