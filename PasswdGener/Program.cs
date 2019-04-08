@@ -12,13 +12,6 @@ namespace PasswdGener
             const string NUMERIC_CHARACTERS = "0123456789";
             const string SPECIAL_CHARACTERS = @"!#$%&*@\";
             const string SPACE_CHARACTER = " ";
-            const int PASSWORD_LENGTH_MIN = 8;
-            const int PASSWORD_LENGTH_MAX = 128;
-
-            if (lengthOfPassword < PASSWORD_LENGTH_MIN || lengthOfPassword > PASSWORD_LENGTH_MAX)
-            {
-                return "Password length must be between 8 and 128.";
-            }
 
             string characterSet = "";
 
@@ -178,9 +171,10 @@ namespace PasswdGener
 
             do
             {
+                //How to prevent from chars or strings?
                 Console.Write("How many characters, at least 8 and max 128: ");
                 lengthOfPassword = int.Parse(Console.ReadLine());
-            } while (lengthOfPassword < 8);
+            } while (lengthOfPassword < 8 || lengthOfPassword > 128);
 
             Console.WriteLine("Generating password");
             System.Threading.Thread.Sleep(1000);
