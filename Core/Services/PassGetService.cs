@@ -8,13 +8,11 @@ namespace Core.Services
     {
         private readonly IValidationService _validationService;
         public string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
-
         public int MAXIMUM_IDENTICAL_CONSECUTIVE_CHARS = 2;
         public string NUMERIC_CHARACTERS = "0123456789";
         public string SPACE_CHARACTER = " ";
         public string SPECIAL_CHARACTERS = @"!#$%&*@\";
         public string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
 
         public PassGetService()
         {
@@ -120,8 +118,7 @@ namespace Core.Services
             {
                 //How to prevent from chars or strings?
                 Console.Write("How many characters, at least 8 and max 128: ");
-                int result;
-                zupa = int.TryParse(Console.ReadLine(), out result);
+                zupa = int.TryParse(Console.ReadLine(), out int result);
 
                 lengthOfPassword = result;
             } while (lengthOfPassword < 8 || lengthOfPassword > 128 || !zupa);
