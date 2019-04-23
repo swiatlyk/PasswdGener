@@ -12,7 +12,7 @@ namespace Core.Test.Unit
     public class Class1
     {
         [Fact]
-        public void ConsoleService()
+        public void AskQuestion_displayMessageOnConsole()
         {
             //arrange
             var cs = new MockedConsoleService();
@@ -25,6 +25,26 @@ namespace Core.Test.Unit
             //assert
             Assert.Equal(expected, cs.DisplayText);
         }
+
+        [Theory]
+        [InlineData('t', true)]
+        [InlineData('T', true)]
+        [InlineData('f', false)]
+        [InlineData('F', false)]
+        public void AskQuestion_returnsProper(char response, bool expected)
+        {
+            //arrange
+            var cs = new MockedConsoleService();
+            var sit = new AskQuestionService(cs);
+            cs.Response = response;
+            
+
+            //act
+            var actual = sit.AskQuestion("szyna kolejowa");
+
+            //assert
+            Assert.Equal(expected, actual);
+        }
     }
 
     public class AskQuestionService
@@ -36,17 +56,24 @@ namespace Core.Test.Unit
             this.cs = cs;
         }
 
-        public void AskQuestion(string tekst)
-        {
+        public bool AskQuestion(string tekst)
+        {            
             cs.ConsoleWriteLine(tekst);
-            //cs.ConsoleWriteLine("szyna kolejowa2");
-
+            var response = cs.ConsoleReadKey();
+            return response == 't' || response == 'T';
         }
     }
 
     public class MockedConsoleService : IConsoleService
     {
         public string DisplayText { get; set; }
+        public char Response { get; set; }
+
+        public char ConsoleReadKey()
+        {
+            return Response;
+        }
+
         public void ConsoleWriteLine(string tekst)
         {
             DisplayText = tekst;
