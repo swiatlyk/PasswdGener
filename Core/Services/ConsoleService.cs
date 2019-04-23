@@ -14,5 +14,11 @@ namespace Core.Services
         {
             Console.WriteLine(tekst);
         }
+
+        public char ConsoleReadKey()
+        {
+            var a = Console.ReadKey().KeyChar;
+            return a;
+        }
     }
 }

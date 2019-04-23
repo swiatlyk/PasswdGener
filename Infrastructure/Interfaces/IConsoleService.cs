@@ -9,5 +9,6 @@ namespace Infrastructure.Interfaces
     public interface IConsoleService
     {
         void ConsoleWriteLine(string tekst);
+        char ConsoleReadKey();
     }
 }
